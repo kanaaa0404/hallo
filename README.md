@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semangat UAS Sayangku!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .message-box {
+            transition: all 0.3s ease;
+        }
+        
+        .message-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-100 to-purple-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="max-w-2xl w-full bg-white rounded-3xl shadow-xl overflow-hidden">
+        <!-- Header Section -->
+        <div class="bg-gradient-to-r from-pink-500 to-purple-600 p-6 text-center">
+            <h1 class="text-4xl font-bold text-white heartbeat">Semangat UAS Sayangku! <i class="fas fa-heart"></i></h1>
+            <p class="text-white mt-2">Kamu pasti bisa melewati ini dengan baik!</p>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="p-8">
+            <!-- Floating Elements -->
+            <div class="flex justify-center mb-8">
+                <div class="floating">
+                    <i class="fas fa-star text-yellow-400 text-6xl"></i>
+                </div>
+                <div class="floating" style="animation-delay: 0.5s;">
+                    <i class="fas fa-heart text-red-500 text-6xl mx-8"></i>
+                </div>
+                <div class="floating" style="animation-delay: 1s;">
+                    <i class="fas fa-book text-blue-500 text-6xl"></i>
+                </div>
+            </div>
+            
+            <!-- Motivational Messages -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                <div class="message-box bg-pink-50 border-l-4 border-pink-500 p-4 rounded-lg">
+                    <h3 class="font-bold text-pink-700"><i class="fas fa-lightbulb mr-2"></i>Ingat Ini!</h3>
+                    <p class="text-gray-700 mt-2">Setiap usaha kerasmu tidak akan sia-sia. Kamu lebih pintar dari yang kamu kira!</p>
+                </div>
+                
+                <div class="message-box bg-purple-50 border-l-4 border-purple-500 p-4 rounded-lg">
+                    <h3 class="font-bold text-purple-700"><i class="fas fa-brain mr-2"></i>Tips Belajar</h3>
+                    <p class="text-gray-700 mt-2">Istirahat yang cukup, makan makanan bergizi, dan percaya pada kemampuanmu!</p>
+                </div>
+            </div>
+            
+            <!-- Personalized Message -->
+            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg mb-8">
+                <h3 class="font-bold text-yellow-700"><i class="fas fa-pen-fancy mr-2"></i>Pesan Khusus Untukmu</h3>
+                <p class="text-gray-700 mt-2" id="personalMessage">Sedang memuat pesan spesial...</p>
+            </div>
+            
+            <!-- Interactive Elements -->
+            <div class="text-center">
+                <button onclick="showRandomMessage()" class="bg-gradient-to-r from-pink-500 to-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition duration-300 mb-4">
+                    <i class="fas fa-magic mr-2"></i>Klik untuk Semangat Tambahan!
+                </button>
+                
+                <div class="flex justify-center space-x-4">
+                    <button onclick="playSound('cheer')" class="bg-green-500 text-white p-3 rounded-full hover:bg-green-600 transition">
+                        <i class="fas fa-hands-clapping"></i>
+                    </button>
+                    <button onclick="playSound('bell')" class="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <button onclick="playSound('tada')" class="bg-red-500 text-white p-3 rounded-full hover:bg-red-600 transition">
+                        <i class="fas fa-music"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="bg-gray-50 p-4 text-center text-gray-600">
+            <p>Dibuat dengan <i class="fas fa-heart text-red-500"></i> untuk kamu yang sedang berjuang!</p>
+            <p class="mt-1 text-sm">Kamu bisa! Aku selalu percaya padamu!</p>
+        </div>
+    </div>
+    
+    <script>
+        // Motivational messages
+        const messages = [
+            "Aku tahu kamu sedang lelah, tapi percayalah, semua ini akan terbayar dengan hasil yang memuaskan!",
+            "Setiap halaman buku yang kamu baca, setiap catatan yang kamu buat, semua membawamu lebih dekat ke kesuksesan!",
+            "UAS ini hanya sementara, tapi ilmu yang kamu dapatkan akan bertahan selamanya!",
+            "Jangan lupa untuk bernapas dan tetap tenang. Kamu sudah mempersiapkan diri dengan baik!",
+            "Aku bangga dengan usahamu selama ini. Sekarang saatnya tunjukkan pada dunia apa yang bisa kamu lakukan!",
+            "Jika kamu merasa kesulitan, ingatlah bahwa aku selalu di sini untuk mendukungmu!",
+            "Kamu adalah orang paling kuat dan cerdas yang aku kenal. UAS ini tidak ada apa-apanya dibandingkan kamu!",
+            "Setelah UAS selesai, kita akan merayakannya bersama. Tahan dulu ya sayang!",
+            "Percayalah pada dirimu sendiri seperti aku percaya padamu. Kamu pasti bisa!",
+            "Setiap jawaban yang kamu tulis adalah bukti dari kerja kerasmu selama ini. Lanjutkan!"
+        ];
+        
+        // Sound effects
+        const sounds = {
+            cheer: "https://assets.mixkit.co/sfx/preview/mixkit-cheering-with-applause-2029.mp3",
+            bell: "https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.mp3",
+            tada: "https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3"
+        };
+        
+        // Initialize with random message
+        document.addEventListener('DOMContentLoaded', function() {
+            showRandomMessage();
+        });
+        
+        // Show random motivational message
+        function showRandomMessage() {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById('personalMessage').textContent = messages[randomIndex];
+            
+            // Add visual feedback
+            const messageBox = document.querySelector('#personalMessage').parentElement;
+            messageBox.classList.add('animate-pulse');
+            setTimeout(() => {
+                messageBox.classList.remove('animate-pulse');
+            }, 1000);
+        }
+        
+        // Play sound effect
+        function playSound(type) {
+            const audio = new Audio(sounds[type]);
+            audio.play();
+            
+            // Visual feedback
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                if (button.onclick && button.onclick.toString().includes(type)) {
+                    button.classList.add('ring-2', 'ring-offset-2');
+                    setTimeout(() => {
+                        button.classList.remove('ring-2', 'ring-offset-2');
+                    }, 500);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
